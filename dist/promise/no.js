@@ -3,53 +3,31 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _regenerator = require('babel-runtime/regenerator');
-
-var _regenerator2 = _interopRequireDefault(_regenerator);
-
-var _asyncToGenerator2 = require('babel-runtime/helpers/asyncToGenerator');
-
-var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
-
-var _promise = require('babel-runtime/core-js/promise');
-
-var _promise2 = _interopRequireDefault(_promise);
-
 exports.$no = $no;
 exports.$addNo = $addNo;
 
-var _chaingun = require('chaingun');
+var _chainGun = require('chain-gun');
+
+var _promisify = require('./promisify');
+
+var _promisify2 = _interopRequireDefault(_promisify);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function $no(node) {
-  return new _promise2.default(function (resolve, reject) {
-    (0, _chaingun.no)(resolve);
-  });
+  return (0, _promisify2.default)(_chainGun.no, node);
 }
 
 function $addNo(_ref) {
   var chain = _ref.chain;
 
-  chain.$no = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
-    return _regenerator2.default.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.next = 2;
-            return $no(this);
+  chain.$no = function () {
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
 
-          case 2:
-            return _context.abrupt('return', _context.sent);
-
-          case 3:
-          case 'end':
-            return _context.stop();
-        }
-      }
-    }, _callee, this);
-  }));
+    return $no.apply(undefined, [this].concat(args));
+  };
   return chain;
 }
 //# sourceMappingURL=no.js.map

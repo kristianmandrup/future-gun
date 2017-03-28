@@ -14,6 +14,8 @@ var _val = require('./val');
 
 var _value = require('./value');
 
+var _put = require('./put');
+
 var _timed = require('./timed');
 
 var _no = require('./no');
@@ -27,6 +29,7 @@ var chains = {
   $addRecurse: _recurse.$addRecurse,
   $addVal: _val.$addVal,
   $addValue: _value.$addValue,
+  $addPut: _put.$addPut,
   $addTimed: _timed.$addTimed
 };
 
@@ -49,7 +52,7 @@ function add(Gun) {
   });
 }
 
-var allNames = ['fields', 'mapReduce', 'val', 'value', 'timed', 'no', 'recurse'];
+var allNames = ['fields', 'mapReduce', 'val', 'value', 'put', 'timed', 'no', 'recurse'];
 
 function $addPromise(_ref) {
   var Gun = _ref.Gun;

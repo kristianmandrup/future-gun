@@ -3,59 +3,35 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _regenerator = require('babel-runtime/regenerator');
-
-var _regenerator2 = _interopRequireDefault(_regenerator);
-
-var _asyncToGenerator2 = require('babel-runtime/helpers/asyncToGenerator');
-
-var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
-
-var _promise = require('babel-runtime/core-js/promise');
-
-var _promise2 = _interopRequireDefault(_promise);
-
 exports.$recurse = $recurse;
 exports.$addRecurse = $addRecurse;
 
-var _chaingun = require('chaingun');
+var _chainGun = require('chain-gun');
+
+var _promisify = require('./promisify');
+
+var _promisify2 = _interopRequireDefault(_promisify);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function $recurse(node, filter) {
-  return new _promise2.default(function (resolve, reject) {
-    (0, _chaingun.recurse)(node, resolve, filter);
-  });
+function $recurse(node) {
+  for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    args[_key - 1] = arguments[_key];
+  }
+
+  return _promisify2.default.apply(undefined, [_chainGun.recurse, node].concat(args));
 }
 
 function $addRecurse(_ref) {
   var chain = _ref.chain;
 
   chain.$recurse = function () {
-    var _ref2 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee(filter) {
-      return _regenerator2.default.wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              _context.next = 2;
-              return $recurse(this, filter);
+    for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      args[_key2] = arguments[_key2];
+    }
 
-            case 2:
-              return _context.abrupt('return', _context.sent);
-
-            case 3:
-            case 'end':
-              return _context.stop();
-          }
-        }
-      }, _callee, this);
-    }));
-
-    return function (_x) {
-      return _ref2.apply(this, arguments);
-    };
-  }();
+    return $recurse.apply(undefined, [this].concat(args));
+  };
   return chain;
 }
 //# sourceMappingURL=recurse.js.map

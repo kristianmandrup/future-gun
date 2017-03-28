@@ -15,13 +15,13 @@ var _promise2 = _interopRequireDefault(_promise);
 exports.$fields = $fields;
 exports.$addFields = $addFields;
 
-var _chaingun = require('chaingun');
+var _chainGun = require('chain-gun');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function $fields(node) {
   return new _promise2.default(function (resolve, reject) {
-    (0, _chaingun.value)(node, function (v) {
+    (0, _chainGun.value)(node, function (v) {
       return resolve((0, _keys2.default)(v));
     });
   });
