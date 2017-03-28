@@ -1,6 +1,6 @@
 # Future gun
 
-![future-gun](https://github.com/kristianmandrup/gun-edge/tree/master/futuregun.png)
+![future-gun](https://github.com/kristianmandrup/future-gun/raw/master/futuregun.png)
 
 [Gun.js](http://gun.js.org/) extensions for `Promise` based async flow control.
 Promise methods are prefixed with `$` by convention.
