@@ -1,18 +1,18 @@
 import {
   mapReduce
-} from 'chaingun'
+} from 'chain-gun'
 
-export function $mapReduce(node, options, ...args) {
-  return new Promise(function (resolve, reject) {
-    mapReduce(node, options, resolve, ...args)
-  })
+import promisify from './promisify'
+
+export function $mapReduce(node, ...args) {
+  return promisify(mapReduce, node, ...args)
 }
 
 export function $addMapReduce({
   chain
 }) {
-  chain.$mapReduce = async function (options, ...args) {
-    return await $mapReduce(this, options, ...args)
+  chain.$mapReduce = function (...args) {
+    return $mapReduce(this, ...args)
   }
   return chain
 }

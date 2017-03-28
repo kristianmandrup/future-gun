@@ -1,18 +1,18 @@
 import {
   recurse
-} from 'chaingun'
+} from 'chain-gun'
 
-export function $recurse(node, filter) {
-  return new Promise(function (resolve, reject) {
-    recurse(node, resolve, filter)
-  })
+import promisify from './promisify'
+
+export function $recurse(node, ...args) {
+  return promisify(recurse, node, ...args)
 }
 
 export function $addRecurse({
   chain
 }) {
-  chain.$recurse = async function (filter) {
-    return await $recurse(this, filter)
+  chain.$recurse = function(...args) {
+    return $recurse(this, ...args)
   }
   return chain
 }

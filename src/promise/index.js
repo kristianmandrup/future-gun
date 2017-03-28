@@ -11,6 +11,9 @@ import {
   $addValue
 } from './value'
 import {
+  $addPut
+} from './put'
+import {
   $addTimed
 } from './timed'
 import {
@@ -27,6 +30,7 @@ const chains = {
   $addRecurse,
   $addVal,
   $addValue,
+  $addPut,
   $addTimed
 }
 
@@ -50,6 +54,7 @@ const allNames = [
   'mapReduce',
   'val',
   'value',
+  'put',
   'timed',
   'no',
   'recurse'

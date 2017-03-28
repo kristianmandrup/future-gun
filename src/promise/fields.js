@@ -1,6 +1,6 @@
 import {
   value
-} from 'chaingun'
+} from 'chain-gun'
 
 export function $fields(node) {
   return new Promise(function (resolve, reject) {

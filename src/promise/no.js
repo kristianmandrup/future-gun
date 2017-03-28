@@ -1,18 +1,18 @@
 import {
   no
-} from 'chaingun'
+} from 'chain-gun'
+
+import promisify from './promisify'
 
 export function $no(node) {
-  return new Promise(function (resolve, reject) {
-    no(resolve)
-  })
+  return promisify(no, node)
 }
 
 export function $addNo({
   chain
 }) {
-  chain.$no = async function () {
-    return await $no(this)
+  chain.$no = function (...args) {
+    return $no(this, ...args)
   }
   return chain
 }

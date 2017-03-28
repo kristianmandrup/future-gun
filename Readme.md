@@ -7,11 +7,20 @@ Promise methods are prefixed with `$` by convention.
 
 ## Install
 
-`npm i -S future-gun`
+npm: `npm i -S future-gun` (soon)
+
+yarn: `yarn add future-gun` (soon)
+
+from github: `npm i -S kristianmandrup/future-gun`
+
+### Dependencies
+
+- `gun` v. 0.6 or higher
+- `chain-gun`
 
 ## Use
 
-Assuming Babel or similar transpiler setup (2017)
+Assumes [Babel.js](https://babeljs.io) or similar transpiler setup
 
 To add all chain methods
 
@@ -60,6 +69,8 @@ ES6 `Promise` or ES7 `async/await`) are always prefixed with `$`
 - `.$val(opt)` - full value (with meta)
 - `.$value(opt)` - get value (no meta)
 - `.$valueAt(path, opt)` - get value at the `path` (no meta)
+- `.$put(opt)` - put value and wait until done (synced)
+- `.$putAt(path, opt)` - put value at the `path` and wait until done (synced)
 - `.$recurse(filter)` - recursive filter
 - `.$timed(opts)` - timed recursion
 

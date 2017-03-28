@@ -1,7 +1,7 @@
 {
-  "name": "gun-edge",
-  "version": "0.8.8",
-  "description": "Gun chain extensions for a higher level DSL and API",
+  "name": "future-gun",
+  "version": "0.1.0",
+  "description": "Gun.s extensions for Promise and async/await flow control",
   "main": "dist/index.js",
   "scripts": {
     "test": "ava",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kristianmandrup/gun-edge.git"
+    "url": "https://github.com/kristianmandrup/future-gun.git"
   },
   "keywords": [
     "gun",
@@ -28,6 +28,7 @@
   "author": "Kristian Mandrup <kmandrup@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "chain-gun": "github:kristianmandrup/chain-gun",
     "gun": "^0.6.6"
   },
   "devDependencies": {

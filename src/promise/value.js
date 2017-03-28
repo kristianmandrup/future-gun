@@ -1,31 +1,31 @@
 import {
   value
-} from 'chaingun'
+} from 'chain-gun'
 
-export function $value(node, opt) {
-  return new Promise(function (resolve, reject) {
-    value(node, resolve, opt)
-  })
+import promisify from './promisify'
+
+export function $value(node, ...args) {
+  return promisify(value, node, ...args)
 }
 
-export function $valueAt(node, at, opt) {
-  let path = node.path(at)
-  if (path) {
-    return path.$value(opt)
+export function $valueAt(node, at, ...args) {
+  let pathNode = node.path(at)
+  if (pathNode) {
+    return promisify(value, pathNode, ...args)
   } else {
-    throw new Error(`No such path ${at}`)
+    throw new Error(`No path ${at}`)
   }
 }
 
 export function $addValue({
   chain
 }) {
-  chain.$value = function (opt) {
-    return $value(this, opt)
+  chain.$value = function (...args) {
+    return $value(this, ...args)
   }
 
-  chain.$valueAt = function (opt) {
-    return $valueAt(this, opt)
+  chain.$valueAt = function (at, ...args) {
+    return $valueAt(this, at, ...args)
   }
   return chain
 }

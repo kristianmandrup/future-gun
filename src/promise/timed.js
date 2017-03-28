@@ -1,21 +1,18 @@
 import {
   timed
-} from '../timed'
+} from 'chain-gun'
 
-export function $timed(node, opts = {}) {
-  return new Promise(function (resolve, reject) {
-    opts = Object.assign(opts, {
-      cb: resolve
-    })
-    timed(node, opts)
-  })
+import promisify from './promisify'
+
+export function $timed(node, ...args) {
+  return promisify(timed, node, ...args)
 }
 
 export function $addTimed({
   chain
 }) {
-  chain.$timed = function (opts) {
-    return $timed(this, opts)
+  chain.$timed = function (...args) {
+    return $timed(this, ...args)
   }
   return chain
 }
