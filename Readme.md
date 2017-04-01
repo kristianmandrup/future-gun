@@ -1,5 +1,7 @@
 # Future gun
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/kristianmandrup/future-gun.svg)](https://greenkeeper.io/)
+
 ![future-gun](https://github.com/kristianmandrup/future-gun/raw/master/futuregun.png)
 
 [Gun.js](http://gun.js.org/) extensions for `Promise` based async flow control.
